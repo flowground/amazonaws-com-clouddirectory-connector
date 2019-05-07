@@ -1,11 +1,11 @@
-# ![LOGO](logo.png) Amazon CloudDirectory MSP Connector
+# ![LOGO](logo.png) Amazon CloudDirectory **flow**ground Connector
 
 ## Description
 
-A generated MSP connector for the Amazon CloudDirectory API (version 2017-01-11).
+A generated **flow**ground connector for the Amazon CloudDirectory API (version 2017-01-11).
 
 Generated from: https://api.apis.guru/v2/specs/amazonaws.com/clouddirectory/2017-01-11/swagger.json<br/>
-Generated at: 2019-05-07T11:15:28+03:00
+Generated at: 2019-05-07T17:35:04+03:00
 
 ## API Description
 
@@ -877,7 +877,7 @@ Supported authorization schemes:
 
 ## License
 
-flowground :- Telekom iPaaS / amazonaws-com-clouddirectory-connector<br/>
+**flow**ground :- Telekom iPaaS / amazonaws-com-clouddirectory-connector<br/>
 Copyright © 2019, [Deutsche Telekom AG](https://www.telekom.de)<br/>
 contact: flowground@telekom.de
 
