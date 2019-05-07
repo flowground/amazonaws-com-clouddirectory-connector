@@ -1,0 +1,230 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "AttributeUpdates": {
+                    "description": "List of attributes that need to be updated in a given schema <a>Facet</a>. Each attribute is followed by <code>AttributeAction</code>, which specifies the type of update operation to perform. ",
+                    "items": {
+                        "description": "A structure that contains information used to update an attribute.",
+                        "properties": {
+                            "Action": {
+                                "description": "The action to perform when updating the attribute.",
+                                "enum": [
+                                    "CREATE_OR_UPDATE",
+                                    "DELETE"
+                                ],
+                                "type": "string"
+                            },
+                            "Attribute": {
+                                "description": "The attribute to update.",
+                                "properties": {
+                                    "AttributeDefinition": {
+                                        "description": "A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html\">Attribute References</a> for more information.",
+                                        "properties": {
+                                            "DefaultValue": {
+                                                "description": "The default value of the attribute (if configured).",
+                                                "properties": {
+                                                    "BinaryValue": {
+                                                        "description": "A binary data value.",
+                                                        "type": "string"
+                                                    },
+                                                    "BooleanValue": {
+                                                        "description": "A Boolean data value.",
+                                                        "type": "boolean"
+                                                    },
+                                                    "DatetimeValue": {
+                                                        "description": "A date and time value.",
+                                                        "format": "date-time",
+                                                        "type": "string"
+                                                    },
+                                                    "NumberValue": {
+                                                        "description": "A number data value.",
+                                                        "type": "string"
+                                                    },
+                                                    "StringValue": {
+                                                        "description": "A string data value.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "IsImmutable": {
+                                                "description": "Whether the attribute is mutable or not.",
+                                                "type": "boolean"
+                                            },
+                                            "Rules": {
+                                                "description": "Validation rules attached to the attribute definition.",
+                                                "items": {
+                                                    "properties": {
+                                                        "key": {
+                                                            "maxLength": 64,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "description": "Contains an Amazon Resource Name (ARN) and parameters that are associated with the rule.",
+                                                            "properties": {
+                                                                "Parameters": {
+                                                                    "description": "The minimum and maximum parameters that are associated with the rule.",
+                                                                    "items": {
+                                                                        "properties": {
+                                                                            "key": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "value": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    },
+                                                                    "type": "array"
+                                                                },
+                                                                "Type": {
+                                                                    "description": "The type of attribute validation rule.",
+                                                                    "enum": [
+                                                                        "BINARY_LENGTH",
+                                                                        "NUMBER_COMPARISON",
+                                                                        "STRING_FROM_SET",
+                                                                        "STRING_LENGTH"
+                                                                    ],
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "Type": {
+                                                "description": "The type of the attribute.",
+                                                "enum": [
+                                                    "STRING",
+                                                    "BINARY",
+                                                    "BOOLEAN",
+                                                    "NUMBER",
+                                                    "DATETIME",
+                                                    "VARIANT"
+                                                ],
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "Type"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "AttributeReference": {
+                                        "description": "An attribute reference that is associated with the attribute. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html\">Attribute References</a> for more information.",
+                                        "properties": {
+                                            "TargetAttributeName": {
+                                                "description": "The target attribute name that is associated with the facet reference. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html\">Attribute References</a> for more information.",
+                                                "maxLength": 230,
+                                                "minLength": 1,
+                                                "pattern": "^[a-zA-Z0-9._:-]*$",
+                                                "type": "string"
+                                            },
+                                            "TargetFacetName": {
+                                                "description": "The target facet name that is associated with the facet reference. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html\">Attribute References</a> for more information.",
+                                                "maxLength": 64,
+                                                "minLength": 1,
+                                                "pattern": "^[a-zA-Z0-9._-]*$",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "TargetFacetName",
+                                            "TargetAttributeName"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "Name": {
+                                        "description": "The name of the facet attribute.",
+                                        "maxLength": 230,
+                                        "minLength": 1,
+                                        "pattern": "^[a-zA-Z0-9._:-]*$",
+                                        "type": "string"
+                                    },
+                                    "RequiredBehavior": {
+                                        "description": "The required behavior of the <code>FacetAttribute</code>.",
+                                        "enum": [
+                                            "REQUIRED_ALWAYS",
+                                            "NOT_REQUIRED"
+                                        ],
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "Name"
+                                ],
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "Name": {
+                    "description": "The name of the facet.",
+                    "maxLength": 64,
+                    "minLength": 1,
+                    "pattern": "^[a-zA-Z0-9._-]*$",
+                    "type": "string"
+                },
+                "ObjectType": {
+                    "description": "The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.",
+                    "enum": [
+                        "NODE",
+                        "LEAF_NODE",
+                        "POLICY",
+                        "INDEX"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Name"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

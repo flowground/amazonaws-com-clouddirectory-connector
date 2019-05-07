@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "properties": {
+        "MaxResults": {
+            "required": false,
+            "type": "string"
+        },
+        "NextToken": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "MaxResults": {
+                    "description": "The <code>MaxResults</code> parameter sets the maximum number of results returned in a single page. This is for future use and is not supported currently.",
+                    "minimum": 50,
+                    "type": "integer"
+                },
+                "NextToken": {
+                    "description": "The pagination token. This is for future use. Currently pagination is not supported for tagging.",
+                    "type": "string"
+                },
+                "ResourceArn": {
+                    "description": "The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ResourceArn"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

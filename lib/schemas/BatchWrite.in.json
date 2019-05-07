@@ -1,0 +1,1098 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "Operations": {
+                    "description": "A list of operations that are part of the batch.",
+                    "items": {
+                        "description": "Represents the output of a <code>BatchWrite</code> operation. ",
+                        "properties": {
+                            "AddFacetToObject": {
+                                "description": "A batch operation that adds a facet to an object.",
+                                "properties": {
+                                    "ObjectAttributeList": {
+                                        "description": "The attributes to set on the object.",
+                                        "items": {
+                                            "description": "The combination of an attribute key and an attribute value.",
+                                            "properties": {
+                                                "Key": {
+                                                    "description": "The key of the attribute.",
+                                                    "properties": {
+                                                        "FacetName": {
+                                                            "description": "The name of the facet that the attribute exists within.",
+                                                            "maxLength": 64,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "Name": {
+                                                            "description": "The name of the attribute.",
+                                                            "maxLength": 230,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._:-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "SchemaArn": {
+                                                            "description": "The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "SchemaArn",
+                                                        "FacetName",
+                                                        "Name"
+                                                    ],
+                                                    "type": "object"
+                                                },
+                                                "Value": {
+                                                    "description": "The value of the attribute.",
+                                                    "properties": {
+                                                        "BinaryValue": {
+                                                            "description": "A binary data value.",
+                                                            "type": "string"
+                                                        },
+                                                        "BooleanValue": {
+                                                            "description": "A Boolean data value.",
+                                                            "type": "boolean"
+                                                        },
+                                                        "DatetimeValue": {
+                                                            "description": "A date and time value.",
+                                                            "format": "date-time",
+                                                            "type": "string"
+                                                        },
+                                                        "NumberValue": {
+                                                            "description": "A number data value.",
+                                                            "type": "string"
+                                                        },
+                                                        "StringValue": {
+                                                            "description": "A string data value.",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "required": [
+                                                "Key",
+                                                "Value"
+                                            ],
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "ObjectReference": {
+                                        "description": "A reference to the object being mutated.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "SchemaFacet": {
+                                        "description": "Represents the facet being added to the object.",
+                                        "properties": {
+                                            "FacetName": {
+                                                "description": "The name of the facet.",
+                                                "maxLength": 64,
+                                                "minLength": 1,
+                                                "pattern": "^[a-zA-Z0-9._-]*$",
+                                                "type": "string"
+                                            },
+                                            "SchemaArn": {
+                                                "description": "The ARN of the schema that contains the facet with no minor component. See <a>arns</a> and <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_inplaceschemaupgrade.html\">In-Place Schema Upgrade</a> for a description of when to provide minor versions.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "SchemaFacet",
+                                    "ObjectAttributeList",
+                                    "ObjectReference"
+                                ],
+                                "type": "object"
+                            },
+                            "AttachObject": {
+                                "description": "Attaches an object to a <a>Directory</a>.",
+                                "properties": {
+                                    "ChildReference": {
+                                        "description": "The child object reference that is to be attached to the object.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "LinkName": {
+                                        "description": "The name of the link.",
+                                        "maxLength": 64,
+                                        "minLength": 1,
+                                        "pattern": "[^\\/\\[\\]\\(\\):\\{\\}#@!?\\s\\\\;]+",
+                                        "type": "string"
+                                    },
+                                    "ParentReference": {
+                                        "description": "The parent object reference.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "ParentReference",
+                                    "ChildReference",
+                                    "LinkName"
+                                ],
+                                "type": "object"
+                            },
+                            "AttachPolicy": {
+                                "description": "Attaches a policy object to a regular object. An object can have a limited number of attached policies.",
+                                "properties": {
+                                    "ObjectReference": {
+                                        "description": "The reference that identifies the object to which the policy will be attached.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "PolicyReference": {
+                                        "description": "The reference that is associated with the policy object.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "PolicyReference",
+                                    "ObjectReference"
+                                ],
+                                "type": "object"
+                            },
+                            "AttachToIndex": {
+                                "description": "Attaches the specified object to the specified index.",
+                                "properties": {
+                                    "IndexReference": {
+                                        "description": "A reference to the index that you are attaching the object to.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "TargetReference": {
+                                        "description": "A reference to the object that you are attaching to the index.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "IndexReference",
+                                    "TargetReference"
+                                ],
+                                "type": "object"
+                            },
+                            "AttachTypedLink": {
+                                "description": "Attaches a typed link to a specified source and target object. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+                                "properties": {
+                                    "Attributes": {
+                                        "description": "A set of attributes that are associated with the typed link.",
+                                        "items": {
+                                            "description": "Identifies the attribute name and value for a typed link.",
+                                            "properties": {
+                                                "AttributeName": {
+                                                    "description": "The attribute name of the typed link.",
+                                                    "maxLength": 230,
+                                                    "minLength": 1,
+                                                    "pattern": "^[a-zA-Z0-9._:-]*$",
+                                                    "type": "string"
+                                                },
+                                                "Value": {
+                                                    "description": "The value for the typed link.",
+                                                    "properties": {
+                                                        "BinaryValue": {
+                                                            "description": "A binary data value.",
+                                                            "type": "string"
+                                                        },
+                                                        "BooleanValue": {
+                                                            "description": "A Boolean data value.",
+                                                            "type": "boolean"
+                                                        },
+                                                        "DatetimeValue": {
+                                                            "description": "A date and time value.",
+                                                            "format": "date-time",
+                                                            "type": "string"
+                                                        },
+                                                        "NumberValue": {
+                                                            "description": "A number data value.",
+                                                            "type": "string"
+                                                        },
+                                                        "StringValue": {
+                                                            "description": "A string data value.",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "required": [
+                                                "AttributeName",
+                                                "Value"
+                                            ],
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "SourceObjectReference": {
+                                        "description": "Identifies the source object that the typed link will attach to.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "TargetObjectReference": {
+                                        "description": "Identifies the target object that the typed link will attach to.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "TypedLinkFacet": {
+                                        "description": "Identifies the typed link facet that is associated with the typed link.",
+                                        "properties": {
+                                            "SchemaArn": {
+                                                "description": "The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.",
+                                                "type": "string"
+                                            },
+                                            "TypedLinkName": {
+                                                "description": "The unique name of the typed link facet.",
+                                                "pattern": "^[a-zA-Z0-9._-]*$",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "SchemaArn",
+                                            "TypedLinkName"
+                                        ],
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "SourceObjectReference",
+                                    "TargetObjectReference",
+                                    "TypedLinkFacet",
+                                    "Attributes"
+                                ],
+                                "type": "object"
+                            },
+                            "CreateIndex": {
+                                "description": "Creates an index object. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm\">Indexing and search</a> for more information.",
+                                "properties": {
+                                    "BatchReferenceName": {
+                                        "description": "The batch reference name. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html\">Transaction Support</a> for more information.",
+                                        "type": "string"
+                                    },
+                                    "IsUnique": {
+                                        "description": "Indicates whether the attribute that is being indexed has unique values or not.",
+                                        "type": "boolean"
+                                    },
+                                    "LinkName": {
+                                        "description": "The name of the link between the parent object and the index object.",
+                                        "maxLength": 64,
+                                        "minLength": 1,
+                                        "pattern": "[^\\/\\[\\]\\(\\):\\{\\}#@!?\\s\\\\;]+",
+                                        "type": "string"
+                                    },
+                                    "OrderedIndexedAttributeList": {
+                                        "description": "Specifies the attributes that should be indexed on. Currently only a single attribute is supported.",
+                                        "items": {
+                                            "description": "A unique identifier for an attribute.",
+                                            "properties": {
+                                                "FacetName": {
+                                                    "description": "The name of the facet that the attribute exists within.",
+                                                    "maxLength": 64,
+                                                    "minLength": 1,
+                                                    "pattern": "^[a-zA-Z0-9._-]*$",
+                                                    "type": "string"
+                                                },
+                                                "Name": {
+                                                    "description": "The name of the attribute.",
+                                                    "maxLength": 230,
+                                                    "minLength": 1,
+                                                    "pattern": "^[a-zA-Z0-9._:-]*$",
+                                                    "type": "string"
+                                                },
+                                                "SchemaArn": {
+                                                    "description": "The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "SchemaArn",
+                                                "FacetName",
+                                                "Name"
+                                            ],
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "ParentReference": {
+                                        "description": "A reference to the parent object that contains the index object.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "OrderedIndexedAttributeList",
+                                    "IsUnique"
+                                ],
+                                "type": "object"
+                            },
+                            "CreateObject": {
+                                "description": "Creates an object.",
+                                "properties": {
+                                    "BatchReferenceName": {
+                                        "description": "The batch reference name. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html\">Transaction Support</a> for more information.",
+                                        "type": "string"
+                                    },
+                                    "LinkName": {
+                                        "description": "The name of the link.",
+                                        "maxLength": 64,
+                                        "minLength": 1,
+                                        "pattern": "[^\\/\\[\\]\\(\\):\\{\\}#@!?\\s\\\\;]+",
+                                        "type": "string"
+                                    },
+                                    "ObjectAttributeList": {
+                                        "description": "An attribute map, which contains an attribute ARN as the key and attribute value as the map value.",
+                                        "items": {
+                                            "description": "The combination of an attribute key and an attribute value.",
+                                            "properties": {
+                                                "Key": {
+                                                    "description": "The key of the attribute.",
+                                                    "properties": {
+                                                        "FacetName": {
+                                                            "description": "The name of the facet that the attribute exists within.",
+                                                            "maxLength": 64,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "Name": {
+                                                            "description": "The name of the attribute.",
+                                                            "maxLength": 230,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._:-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "SchemaArn": {
+                                                            "description": "The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "SchemaArn",
+                                                        "FacetName",
+                                                        "Name"
+                                                    ],
+                                                    "type": "object"
+                                                },
+                                                "Value": {
+                                                    "description": "The value of the attribute.",
+                                                    "properties": {
+                                                        "BinaryValue": {
+                                                            "description": "A binary data value.",
+                                                            "type": "string"
+                                                        },
+                                                        "BooleanValue": {
+                                                            "description": "A Boolean data value.",
+                                                            "type": "boolean"
+                                                        },
+                                                        "DatetimeValue": {
+                                                            "description": "A date and time value.",
+                                                            "format": "date-time",
+                                                            "type": "string"
+                                                        },
+                                                        "NumberValue": {
+                                                            "description": "A number data value.",
+                                                            "type": "string"
+                                                        },
+                                                        "StringValue": {
+                                                            "description": "A string data value.",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "required": [
+                                                "Key",
+                                                "Value"
+                                            ],
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "ParentReference": {
+                                        "description": "If specified, the parent reference to which this object will be attached.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "SchemaFacet": {
+                                        "description": "A list of <code>FacetArns</code> that will be associated with the object. For more information, see <a>arns</a>.",
+                                        "items": {
+                                            "description": "A facet.",
+                                            "properties": {
+                                                "FacetName": {
+                                                    "description": "The name of the facet.",
+                                                    "maxLength": 64,
+                                                    "minLength": 1,
+                                                    "pattern": "^[a-zA-Z0-9._-]*$",
+                                                    "type": "string"
+                                                },
+                                                "SchemaArn": {
+                                                    "description": "The ARN of the schema that contains the facet with no minor component. See <a>arns</a> and <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_inplaceschemaupgrade.html\">In-Place Schema Upgrade</a> for a description of when to provide minor versions.",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    }
+                                },
+                                "required": [
+                                    "SchemaFacet",
+                                    "ObjectAttributeList"
+                                ],
+                                "type": "object"
+                            },
+                            "DeleteObject": {
+                                "description": "Deletes an object in a <a>Directory</a>.",
+                                "properties": {
+                                    "ObjectReference": {
+                                        "description": "The reference that identifies the object.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "ObjectReference"
+                                ],
+                                "type": "object"
+                            },
+                            "DetachFromIndex": {
+                                "description": "Detaches the specified object from the specified index.",
+                                "properties": {
+                                    "IndexReference": {
+                                        "description": "A reference to the index object.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "TargetReference": {
+                                        "description": "A reference to the object being detached from the index.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "IndexReference",
+                                    "TargetReference"
+                                ],
+                                "type": "object"
+                            },
+                            "DetachObject": {
+                                "description": "Detaches an object from a <a>Directory</a>.",
+                                "properties": {
+                                    "BatchReferenceName": {
+                                        "description": "The batch reference name. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html\">Transaction Support</a> for more information.",
+                                        "type": "string"
+                                    },
+                                    "LinkName": {
+                                        "description": "The name of the link.",
+                                        "maxLength": 64,
+                                        "minLength": 1,
+                                        "pattern": "[^\\/\\[\\]\\(\\):\\{\\}#@!?\\s\\\\;]+",
+                                        "type": "string"
+                                    },
+                                    "ParentReference": {
+                                        "description": "Parent reference from which the object with the specified link name is detached.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "ParentReference",
+                                    "LinkName"
+                                ],
+                                "type": "object"
+                            },
+                            "DetachPolicy": {
+                                "description": "Detaches a policy from a <a>Directory</a>.",
+                                "properties": {
+                                    "ObjectReference": {
+                                        "description": "Reference that identifies the object whose policy object will be detached.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "PolicyReference": {
+                                        "description": "Reference that identifies the policy object.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "PolicyReference",
+                                    "ObjectReference"
+                                ],
+                                "type": "object"
+                            },
+                            "DetachTypedLink": {
+                                "description": "Detaches a typed link from a specified source and target object. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+                                "properties": {
+                                    "TypedLinkSpecifier": {
+                                        "description": "Used to accept a typed link specifier as input.",
+                                        "properties": {
+                                            "IdentityAttributeValues": {
+                                                "description": "Identifies the attribute value to update.",
+                                                "items": {
+                                                    "description": "Identifies the attribute name and value for a typed link.",
+                                                    "properties": {
+                                                        "AttributeName": {
+                                                            "description": "The attribute name of the typed link.",
+                                                            "maxLength": 230,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._:-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "Value": {
+                                                            "description": "The value for the typed link.",
+                                                            "properties": {
+                                                                "BinaryValue": {
+                                                                    "description": "A binary data value.",
+                                                                    "type": "string"
+                                                                },
+                                                                "BooleanValue": {
+                                                                    "description": "A Boolean data value.",
+                                                                    "type": "boolean"
+                                                                },
+                                                                "DatetimeValue": {
+                                                                    "description": "A date and time value.",
+                                                                    "format": "date-time",
+                                                                    "type": "string"
+                                                                },
+                                                                "NumberValue": {
+                                                                    "description": "A number data value.",
+                                                                    "type": "string"
+                                                                },
+                                                                "StringValue": {
+                                                                    "description": "A string data value.",
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "AttributeName",
+                                                        "Value"
+                                                    ],
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "SourceObjectReference": {
+                                                "description": "Identifies the source object that the typed link will attach to.",
+                                                "properties": {
+                                                    "Selector": {
+                                                        "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "TargetObjectReference": {
+                                                "description": "Identifies the target object that the typed link will attach to.",
+                                                "properties": {
+                                                    "Selector": {
+                                                        "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "TypedLinkFacet": {
+                                                "description": "Identifies the typed link facet that is associated with the typed link.",
+                                                "properties": {
+                                                    "SchemaArn": {
+                                                        "description": "The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.",
+                                                        "type": "string"
+                                                    },
+                                                    "TypedLinkName": {
+                                                        "description": "The unique name of the typed link facet.",
+                                                        "pattern": "^[a-zA-Z0-9._-]*$",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "SchemaArn",
+                                                    "TypedLinkName"
+                                                ],
+                                                "type": "object"
+                                            }
+                                        },
+                                        "required": [
+                                            "TypedLinkFacet",
+                                            "SourceObjectReference",
+                                            "TargetObjectReference",
+                                            "IdentityAttributeValues"
+                                        ],
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "TypedLinkSpecifier"
+                                ],
+                                "type": "object"
+                            },
+                            "RemoveFacetFromObject": {
+                                "description": "A batch operation that removes a facet from an object.",
+                                "properties": {
+                                    "ObjectReference": {
+                                        "description": "A reference to the object whose facet will be removed.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "SchemaFacet": {
+                                        "description": "The facet to remove from the object.",
+                                        "properties": {
+                                            "FacetName": {
+                                                "description": "The name of the facet.",
+                                                "maxLength": 64,
+                                                "minLength": 1,
+                                                "pattern": "^[a-zA-Z0-9._-]*$",
+                                                "type": "string"
+                                            },
+                                            "SchemaArn": {
+                                                "description": "The ARN of the schema that contains the facet with no minor component. See <a>arns</a> and <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_inplaceschemaupgrade.html\">In-Place Schema Upgrade</a> for a description of when to provide minor versions.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "SchemaFacet",
+                                    "ObjectReference"
+                                ],
+                                "type": "object"
+                            },
+                            "UpdateLinkAttributes": {
+                                "description": "Updates a given object's attributes.",
+                                "properties": {
+                                    "AttributeUpdates": {
+                                        "description": "The attributes update structure.",
+                                        "items": {
+                                            "description": "Structure that contains attribute update information.",
+                                            "properties": {
+                                                "AttributeAction": {
+                                                    "description": "The action to perform as part of the attribute update.",
+                                                    "properties": {
+                                                        "AttributeActionType": {
+                                                            "description": "A type that can be either <code>UPDATE_OR_CREATE</code> or <code>DELETE</code>.",
+                                                            "enum": [
+                                                                "CREATE_OR_UPDATE",
+                                                                "DELETE"
+                                                            ],
+                                                            "type": "string"
+                                                        },
+                                                        "AttributeUpdateValue": {
+                                                            "description": "The value that you want to update to.",
+                                                            "properties": {
+                                                                "BinaryValue": {
+                                                                    "description": "A binary data value.",
+                                                                    "type": "string"
+                                                                },
+                                                                "BooleanValue": {
+                                                                    "description": "A Boolean data value.",
+                                                                    "type": "boolean"
+                                                                },
+                                                                "DatetimeValue": {
+                                                                    "description": "A date and time value.",
+                                                                    "format": "date-time",
+                                                                    "type": "string"
+                                                                },
+                                                                "NumberValue": {
+                                                                    "description": "A number data value.",
+                                                                    "type": "string"
+                                                                },
+                                                                "StringValue": {
+                                                                    "description": "A string data value.",
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "AttributeKey": {
+                                                    "description": "The key of the attribute being updated.",
+                                                    "properties": {
+                                                        "FacetName": {
+                                                            "description": "The name of the facet that the attribute exists within.",
+                                                            "maxLength": 64,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "Name": {
+                                                            "description": "The name of the attribute.",
+                                                            "maxLength": 230,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._:-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "SchemaArn": {
+                                                            "description": "The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "SchemaArn",
+                                                        "FacetName",
+                                                        "Name"
+                                                    ],
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "TypedLinkSpecifier": {
+                                        "description": "Allows a typed link specifier to be accepted as input.",
+                                        "properties": {
+                                            "IdentityAttributeValues": {
+                                                "description": "Identifies the attribute value to update.",
+                                                "items": {
+                                                    "description": "Identifies the attribute name and value for a typed link.",
+                                                    "properties": {
+                                                        "AttributeName": {
+                                                            "description": "The attribute name of the typed link.",
+                                                            "maxLength": 230,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._:-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "Value": {
+                                                            "description": "The value for the typed link.",
+                                                            "properties": {
+                                                                "BinaryValue": {
+                                                                    "description": "A binary data value.",
+                                                                    "type": "string"
+                                                                },
+                                                                "BooleanValue": {
+                                                                    "description": "A Boolean data value.",
+                                                                    "type": "boolean"
+                                                                },
+                                                                "DatetimeValue": {
+                                                                    "description": "A date and time value.",
+                                                                    "format": "date-time",
+                                                                    "type": "string"
+                                                                },
+                                                                "NumberValue": {
+                                                                    "description": "A number data value.",
+                                                                    "type": "string"
+                                                                },
+                                                                "StringValue": {
+                                                                    "description": "A string data value.",
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "AttributeName",
+                                                        "Value"
+                                                    ],
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "SourceObjectReference": {
+                                                "description": "Identifies the source object that the typed link will attach to.",
+                                                "properties": {
+                                                    "Selector": {
+                                                        "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "TargetObjectReference": {
+                                                "description": "Identifies the target object that the typed link will attach to.",
+                                                "properties": {
+                                                    "Selector": {
+                                                        "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "TypedLinkFacet": {
+                                                "description": "Identifies the typed link facet that is associated with the typed link.",
+                                                "properties": {
+                                                    "SchemaArn": {
+                                                        "description": "The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.",
+                                                        "type": "string"
+                                                    },
+                                                    "TypedLinkName": {
+                                                        "description": "The unique name of the typed link facet.",
+                                                        "pattern": "^[a-zA-Z0-9._-]*$",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "SchemaArn",
+                                                    "TypedLinkName"
+                                                ],
+                                                "type": "object"
+                                            }
+                                        },
+                                        "required": [
+                                            "TypedLinkFacet",
+                                            "SourceObjectReference",
+                                            "TargetObjectReference",
+                                            "IdentityAttributeValues"
+                                        ],
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "TypedLinkSpecifier",
+                                    "AttributeUpdates"
+                                ],
+                                "type": "object"
+                            },
+                            "UpdateObjectAttributes": {
+                                "description": "Updates a given object's attributes.",
+                                "properties": {
+                                    "AttributeUpdates": {
+                                        "description": "Attributes update structure.",
+                                        "items": {
+                                            "description": "Structure that contains attribute update information.",
+                                            "properties": {
+                                                "ObjectAttributeAction": {
+                                                    "description": "The action to perform as part of the attribute update.",
+                                                    "properties": {
+                                                        "ObjectAttributeActionType": {
+                                                            "description": "A type that can be either <code>Update</code> or <code>Delete</code>.",
+                                                            "enum": [
+                                                                "CREATE_OR_UPDATE",
+                                                                "DELETE"
+                                                            ],
+                                                            "type": "string"
+                                                        },
+                                                        "ObjectAttributeUpdateValue": {
+                                                            "description": "The value that you want to update to.",
+                                                            "properties": {
+                                                                "BinaryValue": {
+                                                                    "description": "A binary data value.",
+                                                                    "type": "string"
+                                                                },
+                                                                "BooleanValue": {
+                                                                    "description": "A Boolean data value.",
+                                                                    "type": "boolean"
+                                                                },
+                                                                "DatetimeValue": {
+                                                                    "description": "A date and time value.",
+                                                                    "format": "date-time",
+                                                                    "type": "string"
+                                                                },
+                                                                "NumberValue": {
+                                                                    "description": "A number data value.",
+                                                                    "type": "string"
+                                                                },
+                                                                "StringValue": {
+                                                                    "description": "A string data value.",
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "ObjectAttributeKey": {
+                                                    "description": "The key of the attribute being updated.",
+                                                    "properties": {
+                                                        "FacetName": {
+                                                            "description": "The name of the facet that the attribute exists within.",
+                                                            "maxLength": 64,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "Name": {
+                                                            "description": "The name of the attribute.",
+                                                            "maxLength": 230,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9._:-]*$",
+                                                            "type": "string"
+                                                        },
+                                                        "SchemaArn": {
+                                                            "description": "The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "SchemaArn",
+                                                        "FacetName",
+                                                        "Name"
+                                                    ],
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "ObjectReference": {
+                                        "description": "Reference that identifies the object.",
+                                        "properties": {
+                                            "Selector": {
+                                                "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "ObjectReference",
+                                    "AttributeUpdates"
+                                ],
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "Operations"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

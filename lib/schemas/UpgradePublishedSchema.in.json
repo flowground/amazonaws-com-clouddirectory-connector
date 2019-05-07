@@ -1,0 +1,70 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "DevelopmentSchemaArn": {
+                    "description": "The ARN of the development schema with the changes used for the upgrade.",
+                    "type": "string"
+                },
+                "DryRun": {
+                    "description": "Used for testing whether the Development schema provided is backwards compatible, or not, with the publish schema provided by the user to be upgraded. If schema compatibility fails, an exception would be thrown else the call would succeed. This parameter is optional and defaults to false.",
+                    "type": "boolean"
+                },
+                "MinorVersion": {
+                    "description": "Identifies the minor version of the published schema that will be created. This parameter is NOT optional.",
+                    "maxLength": 10,
+                    "minLength": 1,
+                    "pattern": "^[a-zA-Z0-9._-]*$",
+                    "type": "string"
+                },
+                "PublishedSchemaArn": {
+                    "description": "The ARN of the published schema to be upgraded.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "DevelopmentSchemaArn",
+                "PublishedSchemaArn",
+                "MinorVersion"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,203 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "AttributeUpdates": {
+                    "description": "Attributes update structure.",
+                    "items": {
+                        "description": "A typed link facet attribute update.",
+                        "properties": {
+                            "Action": {
+                                "description": "The action to perform when updating the attribute.",
+                                "enum": [
+                                    "CREATE_OR_UPDATE",
+                                    "DELETE"
+                                ],
+                                "type": "string"
+                            },
+                            "Attribute": {
+                                "description": "The attribute to update.",
+                                "properties": {
+                                    "DefaultValue": {
+                                        "description": "The default value of the attribute (if configured).",
+                                        "properties": {
+                                            "BinaryValue": {
+                                                "description": "A binary data value.",
+                                                "type": "string"
+                                            },
+                                            "BooleanValue": {
+                                                "description": "A Boolean data value.",
+                                                "type": "boolean"
+                                            },
+                                            "DatetimeValue": {
+                                                "description": "A date and time value.",
+                                                "format": "date-time",
+                                                "type": "string"
+                                            },
+                                            "NumberValue": {
+                                                "description": "A number data value.",
+                                                "type": "string"
+                                            },
+                                            "StringValue": {
+                                                "description": "A string data value.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "IsImmutable": {
+                                        "description": "Whether the attribute is mutable or not.",
+                                        "type": "boolean"
+                                    },
+                                    "Name": {
+                                        "description": "The unique name of the typed link attribute.",
+                                        "maxLength": 230,
+                                        "minLength": 1,
+                                        "pattern": "^[a-zA-Z0-9._:-]*$",
+                                        "type": "string"
+                                    },
+                                    "RequiredBehavior": {
+                                        "description": "The required behavior of the <code>TypedLinkAttributeDefinition</code>.",
+                                        "enum": [
+                                            "REQUIRED_ALWAYS",
+                                            "NOT_REQUIRED"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Rules": {
+                                        "description": "Validation rules that are attached to the attribute definition.",
+                                        "items": {
+                                            "properties": {
+                                                "key": {
+                                                    "maxLength": 64,
+                                                    "minLength": 1,
+                                                    "pattern": "^[a-zA-Z0-9._-]*$",
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "description": "Contains an Amazon Resource Name (ARN) and parameters that are associated with the rule.",
+                                                    "properties": {
+                                                        "Parameters": {
+                                                            "description": "The minimum and maximum parameters that are associated with the rule.",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "key": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "value": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "Type": {
+                                                            "description": "The type of attribute validation rule.",
+                                                            "enum": [
+                                                                "BINARY_LENGTH",
+                                                                "NUMBER_COMPARISON",
+                                                                "STRING_FROM_SET",
+                                                                "STRING_LENGTH"
+                                                            ],
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "Type": {
+                                        "description": "The type of the attribute.",
+                                        "enum": [
+                                            "STRING",
+                                            "BINARY",
+                                            "BOOLEAN",
+                                            "NUMBER",
+                                            "DATETIME",
+                                            "VARIANT"
+                                        ],
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "Name",
+                                    "Type",
+                                    "RequiredBehavior"
+                                ],
+                                "type": "object"
+                            }
+                        },
+                        "required": [
+                            "Attribute",
+                            "Action"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "IdentityAttributeOrder": {
+                    "description": "The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+                    "items": {
+                        "maxLength": 230,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9._:-]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "Name": {
+                    "description": "The unique name of the typed link facet.",
+                    "pattern": "^[a-zA-Z0-9._-]*$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Name",
+                "AttributeUpdates",
+                "IdentityAttributeOrder"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

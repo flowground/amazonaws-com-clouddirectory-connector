@@ -1,0 +1,157 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "LinkName": {
+                    "description": "The name of link that is used to attach this object to a parent.",
+                    "maxLength": 64,
+                    "minLength": 1,
+                    "pattern": "[^\\/\\[\\]\\(\\):\\{\\}#@!?\\s\\\\;]+",
+                    "type": "string"
+                },
+                "ObjectAttributeList": {
+                    "description": "The attribute map whose attribute ARN contains the key and attribute value as the map value.",
+                    "items": {
+                        "description": "The combination of an attribute key and an attribute value.",
+                        "properties": {
+                            "Key": {
+                                "description": "The key of the attribute.",
+                                "properties": {
+                                    "FacetName": {
+                                        "description": "The name of the facet that the attribute exists within.",
+                                        "maxLength": 64,
+                                        "minLength": 1,
+                                        "pattern": "^[a-zA-Z0-9._-]*$",
+                                        "type": "string"
+                                    },
+                                    "Name": {
+                                        "description": "The name of the attribute.",
+                                        "maxLength": 230,
+                                        "minLength": 1,
+                                        "pattern": "^[a-zA-Z0-9._:-]*$",
+                                        "type": "string"
+                                    },
+                                    "SchemaArn": {
+                                        "description": "The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "SchemaArn",
+                                    "FacetName",
+                                    "Name"
+                                ],
+                                "type": "object"
+                            },
+                            "Value": {
+                                "description": "The value of the attribute.",
+                                "properties": {
+                                    "BinaryValue": {
+                                        "description": "A binary data value.",
+                                        "type": "string"
+                                    },
+                                    "BooleanValue": {
+                                        "description": "A Boolean data value.",
+                                        "type": "boolean"
+                                    },
+                                    "DatetimeValue": {
+                                        "description": "A date and time value.",
+                                        "format": "date-time",
+                                        "type": "string"
+                                    },
+                                    "NumberValue": {
+                                        "description": "A number data value.",
+                                        "type": "string"
+                                    },
+                                    "StringValue": {
+                                        "description": "A string data value.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "required": [
+                            "Key",
+                            "Value"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "ParentReference": {
+                    "description": "If specified, the parent reference to which this object will be attached.",
+                    "properties": {
+                        "Selector": {
+                            "description": "<p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html\">Access Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "SchemaFacets": {
+                    "description": "A list of schema facets to be associated with the object. Do not provide minor version components. See <a>SchemaFacet</a> for details.",
+                    "items": {
+                        "description": "A facet.",
+                        "properties": {
+                            "FacetName": {
+                                "description": "The name of the facet.",
+                                "maxLength": 64,
+                                "minLength": 1,
+                                "pattern": "^[a-zA-Z0-9._-]*$",
+                                "type": "string"
+                            },
+                            "SchemaArn": {
+                                "description": "The ARN of the schema that contains the facet with no minor component. See <a>arns</a> and <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_inplaceschemaupgrade.html\">In-Place Schema Upgrade</a> for a description of when to provide minor versions.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "SchemaFacets"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
