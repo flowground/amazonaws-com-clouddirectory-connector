@@ -1,6 +1,6 @@
 {
     "title": "Amazon CloudDirectory",
-    "description": "<fullname>Amazon Cloud Directory</fullname> <p>Amazon Cloud Directory is a component of the AWS Directory Service that simplifies the development and management of cloud-scale web, mobile, and IoT applications. This guide describes the Cloud Directory operations that you can call programmatically and includes detailed information on data types and errors. For information about Cloud Directory features, see <a href=\"https://aws.amazon.com/directoryservice/\">AWS Directory Service</a> and the <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html\">Amazon Cloud Directory Developer Guide</a>.</p>",
+    "description": "Amazon Cloud Directory Amazon Cloud Directory is a component of the AWS\nDirectory Service that simplifies the development and management of cloud-scale\nweb, mobile, and IoT applications. This guide describes the Cloud Directory\noperations that you can call programmatically and includes detailed information\non data types and errors. For information about Cloud Directory features, see \nAWS Directory Service [https://aws.amazon.com/directoryservice/] and the Amazon\nCloud Directory Developer Guide\n[https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html]\n.",
     "docsUrl": "https://aws.amazon.com/clouddirectory/",
     "url": "https://api.apis.guru/v2/specs/amazonaws.com/clouddirectory/2017-01-11/swagger.json",
     "envVars": {},
@@ -20,7 +20,7 @@
                 "label": "Custom Server URL",
                 "viewClass": "TextFieldView"
             },
-            "hmac": {
+            "auth_hmac": {
                 "label": "Authorization (hmac)",
                 "viewClass": "TextFieldView",
                 "note": "Amazon Signature authorization v4"
@@ -38,7 +38,7 @@
     "actions": {
         "BatchRead": {
             "main": "./lib/actions/BatchRead.js",
-            "title": "Performs all the read operations in a batch. ",
+            "title": "BatchRead",
             "description": "Performs all the read operations in a batch. ",
             "fields": {
                 "verbose": {
@@ -55,7 +55,7 @@
         },
         "BatchWrite": {
             "main": "./lib/actions/BatchWrite.js",
-            "title": "Performs all the write operations in a batch. Either all the operations succeed or none.",
+            "title": "BatchWrite",
             "description": "Performs all the write operations in a batch. Either all the operations succeed or none.",
             "fields": {
                 "verbose": {
@@ -72,7 +72,7 @@
         },
         "DeleteDirectory": {
             "main": "./lib/actions/DeleteDirectory.js",
-            "title": "Deletes a directory. Only disabled directories can be deleted. A deleted directory cannot be undone. Exercise extreme caution when deleting directories.",
+            "title": "DeleteDirectory",
             "description": "Deletes a directory. Only disabled directories can be deleted. A deleted directory cannot be undone. Exercise extreme caution when deleting directories.",
             "fields": {
                 "verbose": {
@@ -89,8 +89,8 @@
         },
         "CreateDirectory": {
             "main": "./lib/actions/CreateDirectory.js",
-            "title": "<p>Creates a <a>Directory</a> by copying the published schema into the directory. A directory cannot be created without a schema.</p> <p>You can also quickly create a directory using a managed schema, called the <code>QuickStartSchema</code>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html\">Managed Schema</a> in the <i>Amazon Cloud Directory Developer Guide</i>.</p>",
-            "description": "<p>Creates a <a>Directory</a> by copying the published schema into the directory. A directory cannot be created without a schema.</p> <p>You can also quickly create a directory using a managed schema, called the <code>QuickStartSchema</code>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html\">Managed Schema</a> in the <i>Amazon Cloud Directory Developer Guide</i>.</p>",
+            "title": "CreateDirectory",
+            "description": "Creates a Directory by copying the published schema into the directory. A\ndirectory cannot be created without a schema.\n\nYou can also quickly create a directory using a managed schema, called the \nQuickStartSchema. For more information, see Managed Schema\n[https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html] \nin the Amazon Cloud Directory Developer Guide.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -106,7 +106,7 @@
         },
         "DisableDirectory": {
             "main": "./lib/actions/DisableDirectory.js",
-            "title": "Disables the specified directory. Disabled directories cannot be read or written to. Only enabled directories can be disabled. Disabled directories may be reenabled.",
+            "title": "DisableDirectory",
             "description": "Disables the specified directory. Disabled directories cannot be read or written to. Only enabled directories can be disabled. Disabled directories may be reenabled.",
             "fields": {
                 "verbose": {
@@ -123,7 +123,7 @@
         },
         "EnableDirectory": {
             "main": "./lib/actions/EnableDirectory.js",
-            "title": "Enables the specified directory. Only disabled directories can be enabled. Once enabled, the directory can then be read and written to.",
+            "title": "EnableDirectory",
             "description": "Enables the specified directory. Only disabled directories can be enabled. Once enabled, the directory can then be read and written to.",
             "fields": {
                 "verbose": {
@@ -140,7 +140,7 @@
         },
         "GetDirectory": {
             "main": "./lib/actions/GetDirectory.js",
-            "title": "Retrieves metadata about a directory.",
+            "title": "GetDirectory",
             "description": "Retrieves metadata about a directory.",
             "fields": {
                 "verbose": {
@@ -157,7 +157,7 @@
         },
         "ListDirectories": {
             "main": "./lib/actions/ListDirectories.js",
-            "title": "Lists directories created within an account.",
+            "title": "ListDirectories",
             "description": "Lists directories created within an account.",
             "fields": {
                 "verbose": {
@@ -174,7 +174,7 @@
         },
         "GetFacet": {
             "main": "./lib/actions/GetFacet.js",
-            "title": "Gets details of the <a>Facet</a>, such as facet name, attributes, <a>Rule</a>s, or <code>ObjectType</code>. You can call this on all kinds of schema facets -- published, development, or applied.",
+            "title": "GetFacet",
             "description": "Gets details of the <a>Facet</a>, such as facet name, attributes, <a>Rule</a>s, or <code>ObjectType</code>. You can call this on all kinds of schema facets -- published, development, or applied.",
             "fields": {
                 "verbose": {
@@ -191,8 +191,8 @@
         },
         "UpdateFacet": {
             "main": "./lib/actions/UpdateFacet.js",
-            "title": "<p>Does the following:</p> <ol> <li> <p>Adds new <code>Attributes</code>, <code>Rules</code>, or <code>ObjectTypes</code>.</p> </li> <li> <p>Updates existing <code>Attributes</code>, <code>Rules</code>, or <code>ObjectTypes</code>.</p> </li> <li> <p>Deletes existing <code>Attributes</code>, <code>Rules</code>, or <code>ObjectTypes</code>.</p> </li> </ol>",
-            "description": "<p>Does the following:</p> <ol> <li> <p>Adds new <code>Attributes</code>, <code>Rules</code>, or <code>ObjectTypes</code>.</p> </li> <li> <p>Updates existing <code>Attributes</code>, <code>Rules</code>, or <code>ObjectTypes</code>.</p> </li> <li> <p>Deletes existing <code>Attributes</code>, <code>Rules</code>, or <code>ObjectTypes</code>.</p> </li> </ol>",
+            "title": "UpdateFacet",
+            "description": "Does the following:\n\n 1.  Adds new Attributes, Rules, or ObjectTypes.\n    \n    \n 2.  Updates existing Attributes, Rules, or ObjectTypes.\n    \n    \n 3.  Deletes existing Attributes, Rules, or ObjectTypes.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -208,7 +208,7 @@
         },
         "ListFacetAttributes": {
             "main": "./lib/actions/ListFacetAttributes.js",
-            "title": "Retrieves attributes attached to the facet.",
+            "title": "ListFacetAttributes",
             "description": "Retrieves attributes attached to the facet.",
             "fields": {
                 "verbose": {
@@ -225,7 +225,7 @@
         },
         "CreateFacet": {
             "main": "./lib/actions/CreateFacet.js",
-            "title": "Creates a new <a>Facet</a> in a schema. Facet creation is allowed only in development or applied schemas.",
+            "title": "CreateFacet",
             "description": "Creates a new <a>Facet</a> in a schema. Facet creation is allowed only in development or applied schemas.",
             "fields": {
                 "verbose": {
@@ -242,7 +242,7 @@
         },
         "DeleteFacet": {
             "main": "./lib/actions/DeleteFacet.js",
-            "title": "Deletes a given <a>Facet</a>. All attributes and <a>Rule</a>s that are associated with the facet will be deleted. Only development schema facets are allowed deletion.",
+            "title": "DeleteFacet",
             "description": "Deletes a given <a>Facet</a>. All attributes and <a>Rule</a>s that are associated with the facet will be deleted. Only development schema facets are allowed deletion.",
             "fields": {
                 "verbose": {
@@ -259,7 +259,7 @@
         },
         "ListFacetNames": {
             "main": "./lib/actions/ListFacetNames.js",
-            "title": "Retrieves the names of facets that exist in a schema.",
+            "title": "ListFacetNames",
             "description": "Retrieves the names of facets that exist in a schema.",
             "fields": {
                 "verbose": {
@@ -276,7 +276,7 @@
         },
         "CreateIndex": {
             "main": "./lib/actions/CreateIndex.js",
-            "title": "Creates an index object. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html\">Indexing and search</a> for more information.",
+            "title": "CreateIndex",
             "description": "Creates an index object. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html\">Indexing and search</a> for more information.",
             "fields": {
                 "verbose": {
@@ -293,7 +293,7 @@
         },
         "AttachToIndex": {
             "main": "./lib/actions/AttachToIndex.js",
-            "title": "Attaches the specified object to the specified index.",
+            "title": "AttachToIndex",
             "description": "Attaches the specified object to the specified index.",
             "fields": {
                 "verbose": {
@@ -310,7 +310,7 @@
         },
         "DetachFromIndex": {
             "main": "./lib/actions/DetachFromIndex.js",
-            "title": "Detaches the specified object from the specified index.",
+            "title": "DetachFromIndex",
             "description": "Detaches the specified object from the specified index.",
             "fields": {
                 "verbose": {
@@ -327,7 +327,7 @@
         },
         "ListIndex": {
             "main": "./lib/actions/ListIndex.js",
-            "title": "Lists objects attached to the specified index.",
+            "title": "ListIndex",
             "description": "Lists objects attached to the specified index.",
             "fields": {
                 "verbose": {
@@ -344,7 +344,7 @@
         },
         "CreateObject": {
             "main": "./lib/actions/CreateObject.js",
-            "title": "Creates an object in a <a>Directory</a>. Additionally attaches the object to a parent, if a parent reference and <code>LinkName</code> is specified. An object is simply a collection of <a>Facet</a> attributes. You can also use this API call to create a policy object, if the facet from which you create the object is a policy facet. ",
+            "title": "CreateObject",
             "description": "Creates an object in a <a>Directory</a>. Additionally attaches the object to a parent, if a parent reference and <code>LinkName</code> is specified. An object is simply a collection of <a>Facet</a> attributes. You can also use this API call to create a policy object, if the facet from which you create the object is a policy facet. ",
             "fields": {
                 "verbose": {
@@ -361,8 +361,8 @@
         },
         "AttachObject": {
             "main": "./lib/actions/AttachObject.js",
-            "title": "<p>Attaches an existing object to another object. An object can be accessed in two ways:</p> <ol> <li> <p>Using the path</p> </li> <li> <p>Using <code>ObjectIdentifier</code> </p> </li> </ol>",
-            "description": "<p>Attaches an existing object to another object. An object can be accessed in two ways:</p> <ol> <li> <p>Using the path</p> </li> <li> <p>Using <code>ObjectIdentifier</code> </p> </li> </ol>",
+            "title": "AttachObject",
+            "description": "Attaches an existing object to another object. An object can be accessed in two\nways:\n\n 1.  Using the path\n    \n    \n 2.  Using ObjectIdentifier",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -378,7 +378,7 @@
         },
         "ListObjectAttributes": {
             "main": "./lib/actions/ListObjectAttributes.js",
-            "title": "Lists all attributes that are associated with an object. ",
+            "title": "ListObjectAttributes",
             "description": "Lists all attributes that are associated with an object. ",
             "fields": {
                 "verbose": {
@@ -395,7 +395,7 @@
         },
         "GetObjectAttributes": {
             "main": "./lib/actions/GetObjectAttributes.js",
-            "title": "Retrieves attributes within a facet that are associated with an object.",
+            "title": "GetObjectAttributes",
             "description": "Retrieves attributes within a facet that are associated with an object.",
             "fields": {
                 "verbose": {
@@ -412,7 +412,7 @@
         },
         "ListObjectChildren": {
             "main": "./lib/actions/ListObjectChildren.js",
-            "title": "Returns a paginated list of child objects that are associated with a given object.",
+            "title": "ListObjectChildren",
             "description": "Returns a paginated list of child objects that are associated with a given object.",
             "fields": {
                 "verbose": {
@@ -429,7 +429,7 @@
         },
         "DeleteObject": {
             "main": "./lib/actions/DeleteObject.js",
-            "title": "Deletes an object and its associated attributes. Only objects with no children and no parents can be deleted. The maximum number of attributes that can be deleted during an object deletion is 30. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html\">Amazon Cloud Directory Limits</a>.",
+            "title": "DeleteObject",
             "description": "Deletes an object and its associated attributes. Only objects with no children and no parents can be deleted. The maximum number of attributes that can be deleted during an object deletion is 30. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html\">Amazon Cloud Directory Limits</a>.",
             "fields": {
                 "verbose": {
@@ -446,7 +446,7 @@
         },
         "DetachObject": {
             "main": "./lib/actions/DetachObject.js",
-            "title": "Detaches a given object from the parent object. The object that is to be detached from the parent is specified by the link name.",
+            "title": "DetachObject",
             "description": "Detaches a given object from the parent object. The object that is to be detached from the parent is specified by the link name.",
             "fields": {
                 "verbose": {
@@ -463,7 +463,7 @@
         },
         "AddFacetToObject": {
             "main": "./lib/actions/AddFacetToObject.js",
-            "title": "Adds a new <a>Facet</a> to an object. An object can have more than one facet applied on it.",
+            "title": "AddFacetToObject",
             "description": "Adds a new <a>Facet</a> to an object. An object can have more than one facet applied on it.",
             "fields": {
                 "verbose": {
@@ -480,7 +480,7 @@
         },
         "RemoveFacetFromObject": {
             "main": "./lib/actions/RemoveFacetFromObject.js",
-            "title": "Removes the specified facet from the specified object.",
+            "title": "RemoveFacetFromObject",
             "description": "Removes the specified facet from the specified object.",
             "fields": {
                 "verbose": {
@@ -497,7 +497,7 @@
         },
         "ListAttachedIndices": {
             "main": "./lib/actions/ListAttachedIndices.js",
-            "title": "Lists indices attached to the specified object.",
+            "title": "ListAttachedIndices",
             "description": "Lists indices attached to the specified object.",
             "fields": {
                 "verbose": {
@@ -514,7 +514,7 @@
         },
         "GetObjectInformation": {
             "main": "./lib/actions/GetObjectInformation.js",
-            "title": "Retrieves metadata about an object.",
+            "title": "GetObjectInformation",
             "description": "Retrieves metadata about an object.",
             "fields": {
                 "verbose": {
@@ -531,7 +531,7 @@
         },
         "ListObjectParents": {
             "main": "./lib/actions/ListObjectParents.js",
-            "title": "Lists parent objects that are associated with a given object in pagination fashion.",
+            "title": "ListObjectParents",
             "description": "Lists parent objects that are associated with a given object in pagination fashion.",
             "fields": {
                 "verbose": {
@@ -548,8 +548,8 @@
         },
         "ListObjectParentPaths": {
             "main": "./lib/actions/ListObjectParentPaths.js",
-            "title": "<p>Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html\">Directory Structure</a>.</p> <p>Use this API to evaluate all parents for an object. The call returns all objects from the root of the directory up to the requested object. The API returns the number of paths based on user-defined <code>MaxResults</code>, in case there are multiple paths to the parent. The order of the paths and nodes returned is consistent among multiple API calls unless the objects are deleted or moved. Paths not leading to the directory root are ignored from the target object.</p>",
-            "description": "<p>Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html\">Directory Structure</a>.</p> <p>Use this API to evaluate all parents for an object. The call returns all objects from the root of the directory up to the requested object. The API returns the number of paths based on user-defined <code>MaxResults</code>, in case there are multiple paths to the parent. The order of the paths and nodes returned is consistent among multiple API calls unless the objects are deleted or moved. Paths not leading to the directory root are ignored from the target object.</p>",
+            "title": "ListObjectParentPaths",
+            "description": "Retrieves all available parent paths for any object type such as node, leaf\nnode, policy node, and index node objects. For more information about objects,\nsee Directory Structure\n[https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html]\n.\n\nUse this API to evaluate all parents for an object. The call returns all objects\nfrom the root of the directory up to the requested object. The API returns the\nnumber of paths based on user-defined MaxResults, in case there are multiple\npaths to the parent. The order of the paths and nodes returned is consistent\namong multiple API calls unless the objects are deleted or moved. Paths not\nleading to the directory root are ignored from the target object.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -565,7 +565,7 @@
         },
         "ListObjectPolicies": {
             "main": "./lib/actions/ListObjectPolicies.js",
-            "title": "Returns policies attached to an object in pagination fashion.",
+            "title": "ListObjectPolicies",
             "description": "Returns policies attached to an object in pagination fashion.",
             "fields": {
                 "verbose": {
@@ -582,7 +582,7 @@
         },
         "UpdateObjectAttributes": {
             "main": "./lib/actions/UpdateObjectAttributes.js",
-            "title": "Updates a given object's attributes.",
+            "title": "UpdateObjectAttributes",
             "description": "Updates a given object's attributes.",
             "fields": {
                 "verbose": {
@@ -599,7 +599,7 @@
         },
         "AttachPolicy": {
             "main": "./lib/actions/AttachPolicy.js",
-            "title": "Attaches a policy object to a regular object. An object can have a limited number of attached policies.",
+            "title": "AttachPolicy",
             "description": "Attaches a policy object to a regular object. An object can have a limited number of attached policies.",
             "fields": {
                 "verbose": {
@@ -616,7 +616,7 @@
         },
         "ListPolicyAttachments": {
             "main": "./lib/actions/ListPolicyAttachments.js",
-            "title": "Returns all of the <code>ObjectIdentifiers</code> to which a given policy is attached.",
+            "title": "ListPolicyAttachments",
             "description": "Returns all of the <code>ObjectIdentifiers</code> to which a given policy is attached.",
             "fields": {
                 "verbose": {
@@ -633,7 +633,7 @@
         },
         "DetachPolicy": {
             "main": "./lib/actions/DetachPolicy.js",
-            "title": "Detaches a policy from an object.",
+            "title": "DetachPolicy",
             "description": "Detaches a policy from an object.",
             "fields": {
                 "verbose": {
@@ -650,7 +650,7 @@
         },
         "LookupPolicy": {
             "main": "./lib/actions/LookupPolicy.js",
-            "title": "Lists all policies from the root of the <a>Directory</a> to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the <code>ObjectIdentifier</code> for such objects. If policies are present, it returns <code>ObjectIdentifier</code>, <code>policyId</code>, and <code>policyType</code>. Paths that don't lead to the root from the target object are ignored. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies\">Policies</a>.",
+            "title": "LookupPolicy",
             "description": "Lists all policies from the root of the <a>Directory</a> to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the <code>ObjectIdentifier</code> for such objects. If policies are present, it returns <code>ObjectIdentifier</code>, <code>policyId</code>, and <code>policyType</code>. Paths that don't lead to the root from the target object are ignored. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies\">Policies</a>.",
             "fields": {
                 "verbose": {
@@ -667,7 +667,7 @@
         },
         "DeleteSchema": {
             "main": "./lib/actions/DeleteSchema.js",
-            "title": "Deletes a given schema. Schemas in a development and published state can only be deleted. ",
+            "title": "DeleteSchema",
             "description": "Deletes a given schema. Schemas in a development and published state can only be deleted. ",
             "fields": {
                 "verbose": {
@@ -684,7 +684,7 @@
         },
         "ListAppliedSchemaArns": {
             "main": "./lib/actions/ListAppliedSchemaArns.js",
-            "title": "Lists schema major versions applied to a directory. If <code>SchemaArn</code> is provided, lists the minor version.",
+            "title": "ListAppliedSchemaArns",
             "description": "Lists schema major versions applied to a directory. If <code>SchemaArn</code> is provided, lists the minor version.",
             "fields": {
                 "verbose": {
@@ -701,7 +701,7 @@
         },
         "ApplySchema": {
             "main": "./lib/actions/ApplySchema.js",
-            "title": "Copies the input published schema, at the specified version, into the <a>Directory</a> with the same name and version as that of the published schema.",
+            "title": "ApplySchema",
             "description": "Copies the input published schema, at the specified version, into the <a>Directory</a> with the same name and version as that of the published schema.",
             "fields": {
                 "verbose": {
@@ -718,8 +718,8 @@
         },
         "CreateSchema": {
             "main": "./lib/actions/CreateSchema.js",
-            "title": "<p>Creates a new schema in a development state. A schema can exist in three phases:</p> <ul> <li> <p> <i>Development:</i> This is a mutable phase of the schema. All new schemas are in the development phase. Once the schema is finalized, it can be published.</p> </li> <li> <p> <i>Published:</i> Published schemas are immutable and have a version associated with them.</p> </li> <li> <p> <i>Applied:</i> Applied schemas are mutable in a way that allows you to add new schema facets. You can also add new, nonrequired attributes to existing schema facets. You can apply only published schemas to directories. </p> </li> </ul>",
-            "description": "<p>Creates a new schema in a development state. A schema can exist in three phases:</p> <ul> <li> <p> <i>Development:</i> This is a mutable phase of the schema. All new schemas are in the development phase. Once the schema is finalized, it can be published.</p> </li> <li> <p> <i>Published:</i> Published schemas are immutable and have a version associated with them.</p> </li> <li> <p> <i>Applied:</i> Applied schemas are mutable in a way that allows you to add new schema facets. You can also add new, nonrequired attributes to existing schema facets. You can apply only published schemas to directories. </p> </li> </ul>",
+            "title": "CreateSchema",
+            "description": "Creates a new schema in a development state. A schema can exist in three phases:\n\n *   Development: This is a mutable phase of the schema. All new schemas are in\n   the development phase. Once the schema is finalized, it can be published.\n   \n   \n *   Published: Published schemas are immutable and have a version associated\n   with them.\n   \n   \n *   Applied: Applied schemas are mutable in a way that allows you to add new\n   schema facets. You can also add new, nonrequired attributes to existing\n   schema facets. You can apply only published schemas to directories.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -735,7 +735,7 @@
         },
         "ListDevelopmentSchemaArns": {
             "main": "./lib/actions/ListDevelopmentSchemaArns.js",
-            "title": "Retrieves each Amazon Resource Name (ARN) of schemas in the development state.",
+            "title": "ListDevelopmentSchemaArns",
             "description": "Retrieves each Amazon Resource Name (ARN) of schemas in the development state.",
             "fields": {
                 "verbose": {
@@ -752,7 +752,7 @@
         },
         "GetAppliedSchemaVersion": {
             "main": "./lib/actions/GetAppliedSchemaVersion.js",
-            "title": "Returns current applied schema version ARN, including the minor version in use.",
+            "title": "GetAppliedSchemaVersion",
             "description": "Returns current applied schema version ARN, including the minor version in use.",
             "fields": {
                 "verbose": {
@@ -769,7 +769,7 @@
         },
         "GetSchemaAsJson": {
             "main": "./lib/actions/GetSchemaAsJson.js",
-            "title": "Retrieves a JSON representation of the schema. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json\">JSON Schema Format</a> for more information.",
+            "title": "GetSchemaAsJson",
             "description": "Retrieves a JSON representation of the schema. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json\">JSON Schema Format</a> for more information.",
             "fields": {
                 "verbose": {
@@ -786,7 +786,7 @@
         },
         "PutSchemaFromJson": {
             "main": "./lib/actions/PutSchemaFromJson.js",
-            "title": "Allows a schema to be updated using JSON upload. Only available for development schemas. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json\">JSON Schema Format</a> for more information.",
+            "title": "PutSchemaFromJson",
             "description": "Allows a schema to be updated using JSON upload. Only available for development schemas. See <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json\">JSON Schema Format</a> for more information.",
             "fields": {
                 "verbose": {
@@ -803,7 +803,7 @@
         },
         "ListManagedSchemaArns": {
             "main": "./lib/actions/ListManagedSchemaArns.js",
-            "title": "Lists the major version families of each managed schema. If a major version ARN is provided as SchemaArn, the minor version revisions in that family are listed instead.",
+            "title": "ListManagedSchemaArns",
             "description": "Lists the major version families of each managed schema. If a major version ARN is provided as SchemaArn, the minor version revisions in that family are listed instead.",
             "fields": {
                 "verbose": {
@@ -820,7 +820,7 @@
         },
         "PublishSchema": {
             "main": "./lib/actions/PublishSchema.js",
-            "title": "Publishes a development schema with a major version and a recommended minor version.",
+            "title": "PublishSchema",
             "description": "Publishes a development schema with a major version and a recommended minor version.",
             "fields": {
                 "verbose": {
@@ -837,7 +837,7 @@
         },
         "ListPublishedSchemaArns": {
             "main": "./lib/actions/ListPublishedSchemaArns.js",
-            "title": "Lists the major version families of each published schema. If a major version ARN is provided as <code>SchemaArn</code>, the minor version revisions in that family are listed instead.",
+            "title": "ListPublishedSchemaArns",
             "description": "Lists the major version families of each published schema. If a major version ARN is provided as <code>SchemaArn</code>, the minor version revisions in that family are listed instead.",
             "fields": {
                 "verbose": {
@@ -854,7 +854,7 @@
         },
         "UpdateSchema": {
             "main": "./lib/actions/UpdateSchema.js",
-            "title": "Updates the schema name with a new name. Only development schema names can be updated.",
+            "title": "UpdateSchema",
             "description": "Updates the schema name with a new name. Only development schema names can be updated.",
             "fields": {
                 "verbose": {
@@ -871,7 +871,7 @@
         },
         "UpgradeAppliedSchema": {
             "main": "./lib/actions/UpgradeAppliedSchema.js",
-            "title": "Upgrades a single directory in-place using the <code>PublishedSchemaArn</code> with schema updates found in <code>MinorVersion</code>. Backwards-compatible minor version upgrades are instantaneously available for readers on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema on a given directory per call. To upgrade multiple directories from one schema, you would need to call this API on each directory.",
+            "title": "UpgradeAppliedSchema",
             "description": "Upgrades a single directory in-place using the <code>PublishedSchemaArn</code> with schema updates found in <code>MinorVersion</code>. Backwards-compatible minor version upgrades are instantaneously available for readers on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema on a given directory per call. To upgrade multiple directories from one schema, you would need to call this API on each directory.",
             "fields": {
                 "verbose": {
@@ -888,7 +888,7 @@
         },
         "UpgradePublishedSchema": {
             "main": "./lib/actions/UpgradePublishedSchema.js",
-            "title": "Upgrades a published schema under a new minor version revision using the current contents of <code>DevelopmentSchemaArn</code>.",
+            "title": "UpgradePublishedSchema",
             "description": "Upgrades a published schema under a new minor version revision using the current contents of <code>DevelopmentSchemaArn</code>.",
             "fields": {
                 "verbose": {
@@ -905,7 +905,7 @@
         },
         "ListTagsForResource": {
             "main": "./lib/actions/ListTagsForResource.js",
-            "title": "Returns tags for a resource. Tagging is currently supported only for directories with a limit of 50 tags per directory. All 50 tags are returned for a given directory with this API call.",
+            "title": "ListTagsForResource",
             "description": "Returns tags for a resource. Tagging is currently supported only for directories with a limit of 50 tags per directory. All 50 tags are returned for a given directory with this API call.",
             "fields": {
                 "verbose": {
@@ -922,7 +922,7 @@
         },
         "TagResource": {
             "main": "./lib/actions/TagResource.js",
-            "title": "An API operation for adding tags to a resource.",
+            "title": "TagResource",
             "description": "An API operation for adding tags to a resource.",
             "fields": {
                 "verbose": {
@@ -939,7 +939,7 @@
         },
         "UntagResource": {
             "main": "./lib/actions/UntagResource.js",
-            "title": "An API operation for removing tags from a resource.",
+            "title": "UntagResource",
             "description": "An API operation for removing tags from a resource.",
             "fields": {
                 "verbose": {
@@ -956,7 +956,7 @@
         },
         "AttachTypedLink": {
             "main": "./lib/actions/AttachTypedLink.js",
-            "title": "Attaches a typed link to a specified source and target object. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "AttachTypedLink",
             "description": "Attaches a typed link to a specified source and target object. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
@@ -973,7 +973,7 @@
         },
         "GetLinkAttributes": {
             "main": "./lib/actions/GetLinkAttributes.js",
-            "title": "Retrieves attributes that are associated with a typed link.",
+            "title": "GetLinkAttributes",
             "description": "Retrieves attributes that are associated with a typed link.",
             "fields": {
                 "verbose": {
@@ -990,7 +990,7 @@
         },
         "UpdateLinkAttributes": {
             "main": "./lib/actions/UpdateLinkAttributes.js",
-            "title": "Updates a given typed link's attributes. Attributes to be updated must not contribute to the typed link's identity, as defined by its <code>IdentityAttributeOrder</code>.",
+            "title": "UpdateLinkAttributes",
             "description": "Updates a given typed link's attributes. Attributes to be updated must not contribute to the typed link's identity, as defined by its <code>IdentityAttributeOrder</code>.",
             "fields": {
                 "verbose": {
@@ -1007,7 +1007,7 @@
         },
         "DetachTypedLink": {
             "main": "./lib/actions/DetachTypedLink.js",
-            "title": "Detaches a typed link from a specified source and target object. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "DetachTypedLink",
             "description": "Detaches a typed link from a specified source and target object. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
@@ -1024,7 +1024,7 @@
         },
         "UpdateTypedLinkFacet": {
             "main": "./lib/actions/UpdateTypedLinkFacet.js",
-            "title": "Updates a <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "UpdateTypedLinkFacet",
             "description": "Updates a <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
@@ -1041,7 +1041,7 @@
         },
         "ListTypedLinkFacetAttributes": {
             "main": "./lib/actions/ListTypedLinkFacetAttributes.js",
-            "title": "Returns a paginated list of all attribute definitions for a particular <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "ListTypedLinkFacetAttributes",
             "description": "Returns a paginated list of all attribute definitions for a particular <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
@@ -1058,7 +1058,7 @@
         },
         "CreateTypedLinkFacet": {
             "main": "./lib/actions/CreateTypedLinkFacet.js",
-            "title": "Creates a <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "CreateTypedLinkFacet",
             "description": "Creates a <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
@@ -1075,7 +1075,7 @@
         },
         "DeleteTypedLinkFacet": {
             "main": "./lib/actions/DeleteTypedLinkFacet.js",
-            "title": "Deletes a <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "DeleteTypedLinkFacet",
             "description": "Deletes a <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
@@ -1092,7 +1092,7 @@
         },
         "GetTypedLinkFacetInformation": {
             "main": "./lib/actions/GetTypedLinkFacetInformation.js",
-            "title": "Returns the identity attribute order for a specific <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "GetTypedLinkFacetInformation",
             "description": "Returns the identity attribute order for a specific <a>TypedLinkFacet</a>. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
@@ -1109,7 +1109,7 @@
         },
         "ListTypedLinkFacetNames": {
             "main": "./lib/actions/ListTypedLinkFacetNames.js",
-            "title": "Returns a paginated list of <code>TypedLink</code> facet names for a particular schema. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "ListTypedLinkFacetNames",
             "description": "Returns a paginated list of <code>TypedLink</code> facet names for a particular schema. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
@@ -1126,7 +1126,7 @@
         },
         "ListIncomingTypedLinks": {
             "main": "./lib/actions/ListIncomingTypedLinks.js",
-            "title": "Returns a paginated list of all the incoming <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "ListIncomingTypedLinks",
             "description": "Returns a paginated list of all the incoming <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
@@ -1143,7 +1143,7 @@
         },
         "ListOutgoingTypedLinks": {
             "main": "./lib/actions/ListOutgoingTypedLinks.js",
-            "title": "Returns a paginated list of all the outgoing <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
+            "title": "ListOutgoingTypedLinks",
             "description": "Returns a paginated list of all the outgoing <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href=\"https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink\">Typed Links</a>.",
             "fields": {
                 "verbose": {
